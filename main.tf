@@ -4,7 +4,7 @@ resource "kubernetes_namespace_v1" "postgresql" {
     }
 }
 
-resource "random_password" "postgresql" {
+resource "random_password" "postgres" {
     length  = 14
     special = true
     override_special = "!$%*+"
@@ -35,7 +35,7 @@ resource "helm_release" "postgresql" {
           size: "${var.storage_size}"
         postgresql:
           replicaCount: 3
-          password: "${random_password.postgresql.result}"
+          password: "${random_password.postgres.result}"
           repmgrPassword: "${random_password.repmgr.result}"
         pgpool:
           adminPassword: "${random_password.pgpool.result}"

@@ -1,6 +1,6 @@
-output "postgresql_password" {
+output "postgres_password" {
     depends_on  = [helm_release.postgresql]
-    value       = random_password.postgresql.result
+    value       = random_password.postgres.result
     sensitive   = true
     description = "postgresql password"
 }
