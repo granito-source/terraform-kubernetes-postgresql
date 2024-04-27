@@ -24,7 +24,7 @@ resource "random_password" "pgpool" {
 
 resource "helm_release" "postgresql" {
     namespace = kubernetes_namespace_v1.postgresql.metadata[0].name
-    name      = "postgresql"
+    name      = "postgresql-ha"
     chart     = "oci://registry-1.docker.io/bitnamicharts/postgresql-ha"
     version   = var.postgresql_version
     values    = [
